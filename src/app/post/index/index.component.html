@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>Angular 14 CRUD Example - ItSolutionStuff.com</h1>
+  
+    <a href="#" routerLink="/post/create/" class="btn btn-success">Efetuar Compra</a>
+	<button type="button" (click)="usuarioPosicaoGet(cpf.value)" class="btn btn-danger">Consultar</button>
+	<input id="cpf" name="cpf" type="text" #cpf>
+    
+	<table class="table table-striped">
+    	<thead>
+	      	<tr>		        
+		        <th>Symbol</th>
+		        <th>Price</th>		        
+	      	</tr>
+	    </thead>
+      	<tbody>
+	      	<tr *ngFor="let tendencia of tendencias">		        
+		        <td>{{ tendencia.symbol }}</td>
+		        <td>{{ tendencia.currentPrice }}</td>		        
+	      	</tr>
+ 	   </tbody>
+    </table>
+
+    <table class="table table-striped">
+    	<thead>
+	      	<tr>
+		        <th>CPF</th>
+		        <th>checkingAccountAmount</th>
+		        <th>consolidated</th>
+		        <th>positions</th>
+	      	</tr>
+	    </thead>
+      	<tbody>	      	
+			<tr *ngIf="usuarioposicoes?.cpf;">
+				<ng-template #elsePos>
+					<td>default</td>
+				  </ng-template>
+				<td>{{ usuarioposicoes.cpf }}</td>
+		        <td>{{ usuarioposicoes.checkingAccountAmount }}</td>
+		        <td>{{ usuarioposicoes.consolidated }}</td>	
+				<td><tr *ngFor="let usuarioposicao of usuarioposicoes.positions">					
+					<td>{{ usuarioposicao?.symbol }} |</td>
+					<td>quant:{{ usuarioposicao?.amount }} |</td>
+					<td>R$: {{ usuarioposicao?.currentPrice }}</td>		        												
+			</tr>						
+ 	   </tbody>
+    </table>
+ </div>

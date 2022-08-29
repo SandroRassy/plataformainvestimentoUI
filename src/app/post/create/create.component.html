@@ -1,0 +1,56 @@
+<div class="container">
+    <h1>Create New Post</h1>
+  
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <input 
+                formControlName="cpf"
+                id="cpf" 
+                name="cpf"
+                type="text" 
+                class="form-control">
+            <div *ngIf="f['cpf'].touched && f['cpf'].invalid" class="alert alert-danger">
+                <div *ngIf="f['cpf'].errors && f['cpf'].errors['required']">CPF is required.</div>
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="symbol">Symbol</label>
+            <textarea 
+                formControlName="symbol"
+                id="symbol" 
+                name="symbol"
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['symbol'].touched && f['symbol'].invalid" class="alert alert-danger">
+                <div *ngIf="f['symbol'].errors && f['symbol'].errors['required']">Symbol is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <textarea 
+                formControlName="amount"
+                id="amount" 
+                name="amount"
+                type="text" 
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['amount'].touched && f['amount'].invalid" class="alert alert-danger">
+                <div *ngIf="f['amount'].errors && f['amount'].errors['required']">Amount is required.</div>
+            </div>
+        </div>        
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+
+        <div *ngIf="isShown" class="row container-fluid"  id="divshow" >
+            {{ htmlStr }}
+        </div>
+
+    </form>
+</div>
